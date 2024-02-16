@@ -87,10 +87,31 @@ methods: {
   }
 },
 created() {
-
+  console.log('created()');
   this.getNewQuestion();
 
-}
+},
+beforeCreate() {
+  console.log('beforeCreate()');
+},
+beforeMount() {
+  console.log('beforeMount()');
+},
+mounted() {
+  console.log('mounted()');
+},
+beforeUpdate() {
+  console.log('beforeUpdate()');
+},
+updated() {
+  console.log('updated()');
+},
+beforeUnmount() {
+  console.log('beforeUnmount()');
+},
+unmounted() {
+  console.log('unmounted()');
+},
 }
 
 </script>
