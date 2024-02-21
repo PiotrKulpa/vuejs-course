@@ -1,7 +1,10 @@
 import { createApp } from 'vue';
-import App from './App.vue';
-// import store from './store';
-import axios from 'axios';
-import VueAxios from 'vue-axios';
 
-createApp(App).use(VueAxios, axios).mount('#app');
+import App from './App.vue';
+import FriendContact from './components/FriendContact.vue';
+
+const app = createApp(App);
+
+app.component('friend-contact', FriendContact);
+
+app.mount('#app');
