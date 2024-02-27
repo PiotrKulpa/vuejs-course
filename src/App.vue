@@ -1,44 +1,47 @@
 <template>
-  <section>
-  <h2>My Friends</h2>
-  <ul>
-    <friend-contact 
-      v-for="friend in friends" 
-      :key="friend.id"
-      :id="friend.id" 
-      :name="friend.name" 
-      :phone-number="friend.phone" 
-      :email-address="friend.email"
-      @toggle-favorite="toggleFavoriteStatus"
-      ></friend-contact>
-  </ul>
-  </section>
+  <div>
+    <the-header></the-header>
+    <button @click="setSelectedComponent('active-goals')">Set active goals</button>
+    <button @click="setSelectedComponent('manage-goals')">Set manage goals</button>
+    <component :is="selectedComponent"></component>
+  </div>
 </template>
 
 <script>
+import TheHeader from './components/TheHeader.vue';
+import ActiveGoals from './components/ActiveGoals.vue';
+import ManageGoals from './components/ManageGoals.vue';
+
 export default {
+  components: {
+    TheHeader,
+    ActiveGoals,
+    ManageGoals
+  },
   data() {
     return {
-      friends: [
-        {
-          id: 'manuel',
-          name: 'Manuel Lorenz',
-          phone: '0123 4567 90',
-          email: 'manuel@localhost.com'
-        },
-        {
-          id: 'maria',
-          name: 'Maria Lorenz',
-          phone: '0555 4567 90',
-          email: 'maria@localhost.com'
-        }
-      ]
-    }
+      activeUser: {
+        name: 'Maximilian SchwarzmÃžller',
+        description: 'Site owner and admin',
+        role: 'admin',
+      },
+      selectedComponent: 'active-goals',
+    };
   },
   methods: {
-    toggleFavoriteStatus(friendId) {
-      console.log(friendId)
+    setSelectedComponent(cpn) {
+      this.selectedComponent = cpn;
     }
   }
+};
+</script>
+
+<style>
+html {
+  font-family: sans-serif;
 }
-</script>   
+
+body {
+  margin: 0;
+}
+</style>
